@@ -19,7 +19,7 @@ class _SearchPageState extends State<SearchPage> {
         builder: (BuildContext context, news, Widget? child) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Berita yang Anda cari'),
+          title: const Text('Search for news'),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -33,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
                       child: TextFormField(
                         controller: searchController,
                         decoration: const InputDecoration(
-                          hintText: 'Cari berita...',
+                          hintText: 'Search for the news you want...',
                         ),
                       ),
                     ),

@@ -1,13 +1,11 @@
-// ignore_for_file: void_checks
-
-class TopNewsModel {
+class NewsModel {
   String? status;
   int? totalResults;
   List<Articles>? articles;
 
-  TopNewsModel({this.status, this.totalResults, this.articles});
+  NewsModel({this.status, this.totalResults, this.articles});
 
-  TopNewsModel.fromJson(Map<String, dynamic> json) {
+  NewsModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     totalResults = json['totalResults'];
     if (json['articles'] != null) {

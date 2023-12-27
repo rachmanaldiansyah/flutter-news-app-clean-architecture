@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Berita terbaru saat ini'),
+            title: const Text('Latest news today'),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 20.0),

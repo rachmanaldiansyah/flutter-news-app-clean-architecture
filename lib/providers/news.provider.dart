@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app_clean_architecture/helpers/api.client.dart';
-import 'package:news_app_clean_architecture/models/topNews.model.dart';
+import 'package:news_app_clean_architecture/models/news.model.dart';
 
 import '../utils/const.dart';
 
@@ -9,8 +9,8 @@ class NewsProvider with ChangeNotifier {
   bool isLoading = true;
   bool isLoadingSearch = true;
 
-  TopNewsModel? resNews;
-  TopNewsModel? resSearch;
+  NewsModel? resNews;
+  NewsModel? resSearch;
 
   setLoading(data) {
     isLoading = data;
@@ -18,12 +18,12 @@ class NewsProvider with ChangeNotifier {
   }
 
   getTopNews() async {
-    final res = await api('${baseUrl}top-headlines?country=id&apiKey=$apiKey');
+    final res = await api('${baseUrl}top-headlines?country=us&apiKey=$apiKey');
 
     if (res.statusCode == 200) {
-      resNews = TopNewsModel.fromJson(res.data);
+      resNews = NewsModel.fromJson(res.data);
     } else {
-      resNews = TopNewsModel();
+      resNews = NewsModel();
     }
     isLoading = false;
     notifyListeners();
@@ -35,12 +35,12 @@ class NewsProvider with ChangeNotifier {
     notifyListeners();
 
     final res = await api(
-        '${baseUrl}everything?q=$search&from=2023-12-26&to=2023-12-26&sortBy=popularity&apiKey=$apiKey');
+        '${baseUrl}everything?q=$search&language=en&sortBy=popularity&apiKey=$apiKey');
 
     if (res.statusCode == 200) {
-      resSearch = TopNewsModel.fromJson(res.data);
+      resSearch = NewsModel.fromJson(res.data);
     } else {
-      resSearch = TopNewsModel();
+      resSearch = NewsModel();
     }
     isLoadingSearch = false;
     notifyListeners();
